@@ -15,14 +15,14 @@ public class Rotate : MonoBehaviour
     void Update()
     {
         //gravity to left
-        if ()
-        {
-            Physics2D.gravity = new Vector2(Physics2D.gravity.y, 0);
-        }
+        //if ()
+        //{
+        //    Physics2D.gravity = new Vector2(Physics2D.gravity.y, 0);
+        //}
         //gravity to right
-        if () 
-        { 
-            Physics2D.gravity = new Vector2(Physics2D.gravity.x, 0);
-        }
+        //if () 
+        //{ 
+        //    Physics2D.gravity = new Vector2(Physics2D.gravity.x, 0);
+        //}
     }
 }
