@@ -342,16 +342,22 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
 <<<<<<< HEAD
+<<<<<<< HEAD
       - m_Target: {fileID: 219380521}
         m_TargetAssemblyTypeName: LoadSceneOnClick, Assembly-CSharp
         m_MethodName: LoadScene
         m_Mode: 5
 =======
+=======
+>>>>>>> parent of b7b7649... Tweaked button layout
       - m_Target: {fileID: 700786896}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
+<<<<<<< HEAD
 >>>>>>> a02db1a423474cd019e8b7f5adea802525c192a5
+=======
+>>>>>>> parent of b7b7649... Tweaked button layout
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
