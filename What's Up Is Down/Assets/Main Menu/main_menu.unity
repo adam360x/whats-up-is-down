@@ -226,6 +226,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: SetActive
       objectReference: {fileID: 0}
+    - target: {fileID: 8843559470297152871, guid: e206434e7e52154468477bca513487ce, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: main_menu
+      objectReference: {fileID: 0}
     - target: {fileID: 8843559470386740920, guid: e206434e7e52154468477bca513487ce, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0.000043392
