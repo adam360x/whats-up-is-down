@@ -96,6 +96,10 @@ public class testPendulum : MonoBehaviour
                 rotate = true;
                 Debug.Log("Hello");
             }
+            else
+            {
+                Debug.Log(wp);
+            }
         }
         // Rotates as object around center object and rotates object to face center
         if (rotate)
