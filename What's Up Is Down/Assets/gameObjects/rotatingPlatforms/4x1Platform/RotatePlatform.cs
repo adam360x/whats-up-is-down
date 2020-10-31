@@ -27,6 +27,10 @@ public class RotatePlatform : MonoBehaviour
                 rotate = true;
                 Debug.Log("Hello");
             }
+            else
+            {
+                Debug.Log(wp);
+            }
         }
         if (rotate)
         {
