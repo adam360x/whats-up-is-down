@@ -342,9 +342,15 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+<<<<<<< HEAD
       - m_Target: {fileID: 11500000, guid: 64ad656329298b74dac4f0925bd8c006, type: 3}
         m_TargetAssemblyTypeName: UnityEngine.Object, UnityEngine
         m_MethodName: set_name
+=======
+      - m_Target: {fileID: 219380521}
+        m_TargetAssemblyTypeName: LoadSceneOnClick, Assembly-CSharp
+        m_MethodName: LoadScene
+>>>>>>> parent of 62e067c... minor change
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
