@@ -87,7 +87,7 @@ public class PlayerController : MonoBehaviour
         }
 
         //gravity input
-        if(ePress && !changeGravE){
+        if(ePress && !changeGravE && !changeGravQ){
             gravDirection++;
             if(gravDirection > 3){
                 gravDirection = 0;
@@ -96,7 +96,7 @@ public class PlayerController : MonoBehaviour
             ChangeGravity();
             ePress = false;
         }
-        if(qPress && !changeGravQ){
+        if(qPress && !changeGravQ && !changeGravE){
             gravDirection--;
             if(gravDirection < 0){
                 gravDirection = 3;
