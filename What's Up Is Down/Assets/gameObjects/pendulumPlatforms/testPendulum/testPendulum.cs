@@ -34,22 +34,22 @@ public class testPendulum : MonoBehaviour
 
         // Code checks location of the platform relative to the center object and assigns the current angle based on this
         Transform platform = transform.Find("Platform1");
-        if (transform.position.y > platform.position.y)
+         if (transform.localPosition.y > platform.localPosition.y)
         {
             angle = -Mathf.PI / 2;
             secondRotate = true;
         }
-        if (transform.position.y < platform.position.y)
+        else if (transform.localPosition.y < platform.localPosition.y)
         {
             angle = -Mathf.PI -Mathf.PI / 2;
             fourthRotate = true;
         }
-        if (transform.position.x < platform.position.x)
+        else if (transform.localPosition.x < platform.localPosition.x)
         {
             angle = 0;
             firstRotate = true;
         }
-        if (transform.position.x > platform.position.x)
+        else if (transform.localPosition.x > platform.localPosition.x)
         {
             angle = -Mathf.PI;
             thirdRotate = true;
@@ -73,13 +73,13 @@ public class testPendulum : MonoBehaviour
         //}
 
         // Finds the radius of the rotation.
-        if (transform.position.x - platform.position.x > 0)
+        if (transform.position.x != platform.position.x)
         {
-            rotationRadius = transform.position.x - platform.position.x;
+            rotationRadius = Mathf.Abs(transform.position.x - platform.position.x);
         }
         else
         {
-            rotationRadius = transform.position.y - platform.position.y;
+            rotationRadius = Mathf.Abs(transform.position.y - platform.position.y);
         }
     }
 
