@@ -1,16 +1,11 @@
 # whats-up-is-down
 
-# TODO
-
-WE NEED TO MAKE AN ITERATION 1 BRANCH AND PUT THE FINAL APK ON IT, you'll need to git add insertnamehere.apk -f to force it, since apks are on the gitignore
-
-WE ALSO NEED TO CONVERT THIS FILE INTO A PDF, possibly add a few pictures/screenshots in the PDF version to be submitted on canvas?
 
 # Installation Instructions
 
 Hello!  Welcome to What's Up Is Down!
 
-For the iteration 1 update, we're compiling the .apk file for you to simply download to your device and run natively.
+For the iteration 2 update, we're compiling the .apk file for you to simply download to your device and run natively.
 
 You have one of two options for this:
 
