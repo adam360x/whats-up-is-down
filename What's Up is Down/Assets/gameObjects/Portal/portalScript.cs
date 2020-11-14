@@ -11,6 +11,7 @@ public class portalScript : MonoBehaviour
     public static portalScript instance;
     public TextMeshProUGUI portalText;
     public int numJewels;
+    public string NextLvl;
     bool showText = false;
     int count = 0;
     public int messageTime;
@@ -40,7 +41,7 @@ public class portalScript : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other){
         if(other.gameObject.CompareTag("Player")){
             if(jewelCounter.instance.jewelScore >= numJewels){
-                SceneManager.LoadScene("Main_Menu");
+                SceneManager.LoadScene(NextLvl);
             }
             else{
                 showText = true;

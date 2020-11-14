@@ -118,6 +118,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   portalText: {fileID: 285158651892509603, guid: 0ff110d45576b4d579a92d586fc06110, type: 3}
   numJewels: 3
+  NextLvl: Main Menu
   messageTime: 900
 --- !u!61 &5066860650384991758
 BoxCollider2D:
