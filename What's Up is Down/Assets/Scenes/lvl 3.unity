@@ -558,6 +558,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: PendulumPlatform
       objectReference: {fileID: 0}
+    - target: {fileID: 5692059371973745824, guid: ea5d25f8ad0ef4b38a88769fe14c9402, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5692059372609297260, guid: ea5d25f8ad0ef4b38a88769fe14c9402, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea5d25f8ad0ef4b38a88769fe14c9402, type: 3}
 --- !u!1001 &1114946520
