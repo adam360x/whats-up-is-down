@@ -13,8 +13,8 @@ public class portalScript : MonoBehaviour
     public int numJewels;
     public string NextLvl;
     bool showText = false;
-    int count = 0;
-    public int messageTime;
+    float count = 0;
+    public float messageTime;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,7 +29,7 @@ public class portalScript : MonoBehaviour
     void Update()
     {
         if(showText){
-            count++;
+            count += Time.deltaTime;
             if(count >= messageTime){
                 portalText.text = "";
                 count = 0;
