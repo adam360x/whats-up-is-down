@@ -9,6 +9,7 @@ public class portalScript : MonoBehaviour
 {
 
     public TextMeshProUGUI portalText;
+    public static portalScript instance;
     public int numJewels;
     bool showText = false;
     int count = 0;
@@ -16,7 +17,9 @@ public class portalScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        if(instance == null){
+            instance = this;
+        }
     }
 
     // Update is called once per frame
