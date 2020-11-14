@@ -28,6 +28,10 @@ public class PlayerController : MonoBehaviour
     private Vector2 localVelocityL;
     //jump
     private Vector2 localVelocityJ;
+    //wall right
+    private Vector2 localVelocityWR;
+    //wall left
+    private Vector2 localVelocityWL;
     //Movement input checkers
     private bool moveRight;
     private bool moveLeft;
@@ -152,7 +156,6 @@ public class PlayerController : MonoBehaviour
      void FixedUpdate()
     {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
-
         //move left & right
         if(moveRight){
             getRightLocalVel();
@@ -199,7 +202,6 @@ public class PlayerController : MonoBehaviour
             }
         }
       
-
         if(facingRight == false && moveRight == true){
             Flip();
         }
