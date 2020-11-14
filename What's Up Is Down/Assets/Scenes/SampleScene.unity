@@ -2965,7 +2965,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1941753370617758970, guid: c6d69837ab27c73448badfe2d72ee334, type: 3}
       propertyPath: rotateRate
-      value: 0.5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1941753370617758970, guid: c6d69837ab27c73448badfe2d72ee334, type: 3}
       propertyPath: joystick
@@ -3022,7 +3022,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6431849527890293961, guid: 3dd95af6d4d6b114db893b4d84f30f14, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 254.95001
+      value: 254.9502
       objectReference: {fileID: 0}
     - target: {fileID: 8206770730961577910, guid: 3dd95af6d4d6b114db893b4d84f30f14, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target

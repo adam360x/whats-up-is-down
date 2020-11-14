@@ -48,6 +48,7 @@ public class PlayerController : MonoBehaviour
     private float rotateAngle;
     private float angleCounter;
     public float rotateRate;
+    private float initialRotateAngle;
     private bool changeGravE;
     private bool changeGravQ;
 
@@ -128,22 +129,32 @@ public class PlayerController : MonoBehaviour
             qPress = false;
         }
         if(changeGravE){
-            rotateAngle += rotateRate;
-            angleCounter += rotateRate;
-            if(angleCounter == 90.0f){
+            if(rotateAngle % 90 == 0)
+            {
+                initialRotateAngle = rotateAngle;
+            }
+            rotateAngle += rotateRate * Time.deltaTime;
+            angleCounter += rotateRate * Time.deltaTime;
+            if(angleCounter >= 90.0f){
                 changeGravE = false;
                 angleCounter = 0.0f;
+                rotateAngle = initialRotateAngle + 90;
                 
             }
             transform.eulerAngles = new Vector3(0, 0, rotateAngle);
         }
         if(changeGravQ){
-            rotateAngle -= rotateRate;
-            angleCounter += rotateRate;
-            if(angleCounter == 90.0f){
+            if (rotateAngle % 90 == 0)
+            {
+                initialRotateAngle = rotateAngle;
+            }
+            rotateAngle -= rotateRate * Time.deltaTime;
+            angleCounter += rotateRate * Time.deltaTime;
+            if(angleCounter >= 90.0f){
                 changeGravQ = false;
                 angleCounter = 0.0f;
-                
+                rotateAngle = initialRotateAngle - 90;
+
             }
             transform.eulerAngles = new Vector3(0, 0, rotateAngle);
         }
