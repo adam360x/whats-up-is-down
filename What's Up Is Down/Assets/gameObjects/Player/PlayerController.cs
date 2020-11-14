@@ -56,6 +56,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        Physics2D.gravity = new Vector2 (0, -9.81f);
         gravDirection = 0;
         rotateAngle = 0f;
         changeGravE = false;
