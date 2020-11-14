@@ -18,7 +18,8 @@ public class PlayerController : MonoBehaviour
     private bool ePress;
     
     //Global physics vars
-    public float speed;
+    public float runSpeed;
+    private float walkSpeed;
     public float jumpForce;
     public float friction;
     //right
@@ -30,6 +31,8 @@ public class PlayerController : MonoBehaviour
     //Movement input checkers
     private bool moveRight;
     private bool moveLeft;
+    private bool walkRight;
+    private bool walkLeft;
     private bool isJumping;
     //Jump detection vars
     private bool isGrounded;
@@ -56,13 +59,14 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        Physics2D.gravity = new Vector2 (0, -9.81f);
         gravDirection = 0;
         rotateAngle = 0f;
         changeGravE = false;
         changeGravQ = false;
         qPress = false;
         ePress = false;
+        walkRight = false;
+        walkLeft = false;
         gravQBtn = GravQ.GetComponent<Button>();
         gravEBtn = GravE.GetComponent<Button>();
         gravEBtn.onClick.AddListener(GravRightClick);
@@ -76,15 +80,31 @@ public class PlayerController : MonoBehaviour
         //movement input
         if(joystick.Horizontal > 0){
             moveRight = true;
+            if(joystick.Horizontal < 0.4f){
+                walkRight = true;
+                walkSpeed = (joystick.Horizontal * 2) * runSpeed;
+            }
+            else{
+                walkRight = false;
+            }
         }
         else{
             moveRight = false;
+            walkRight = false;
         }
         if(joystick.Horizontal < 0){
             moveLeft = true;
+            if(joystick.Horizontal > -0.4f){
+                walkLeft = true;
+                walkSpeed = (Mathf.Abs(joystick.Horizontal) * 2) * runSpeed;
+            }
+            else{
+                walkLeft = false;
+            }
         }
         else{
             moveLeft = false;
+            walkLeft = false;
         }
 
         //gravity input
@@ -132,30 +152,13 @@ public class PlayerController : MonoBehaviour
      void FixedUpdate()
     {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
-
         //move left & right
         if(moveRight){
-            localVelocityR = new Vector2 (transform.right.x, transform.right.y);
-            localVelocityR = localVelocityR * speed;
-            if (Mathf.Abs(localVelocityR.y) < 1f){
-                localVelocityR.y = rb.velocity.y;
-            }
-            else if(Mathf.Abs(localVelocityR.x) < 1f){
-                localVelocityR.x = rb.velocity.x;
-            }
-            
+            getRightLocalVel();
             rb.velocity = localVelocityR;
         }
         if(moveLeft){
-            localVelocityL = new Vector2(-1*transform.right.x, -1*transform.right.y);
-            localVelocityL = localVelocityL * speed;
-            if (Mathf.Abs(localVelocityL.y) < 1f){
-                localVelocityL.y = rb.velocity.y;
-            }
-            else if(Mathf.Abs(localVelocityL.x) < 1f){
-                localVelocityL.x = rb.velocity.x;
-            }
-
+            getLeftLocalVel();
             rb.velocity = localVelocityL;
         }
         //friction
@@ -179,30 +182,14 @@ public class PlayerController : MonoBehaviour
         }
         //jumping & jump timer
          if(isJumping && isGrounded){
-            localVelocityJ = new Vector2(transform.up.x, transform.up.y);
-            localVelocityJ = localVelocityJ * jumpForce;
-            if(Mathf.Abs(localVelocityJ.x) < 1f){
-                localVelocityJ.x = rb.velocity.x;
-            }
-            else if(Mathf.Abs(localVelocityJ.y) < 1f){
-                localVelocityJ.y = rb.velocity.y;
-            }
-
+            getUpLocalVel();
             rb.velocity = localVelocityJ;
             stillJumping = true;
             jumpTimeCounter = jumpTime;
         }
         if(isJumping && stillJumping){
             if(jumpTimeCounter > 0){
-                localVelocityJ = new Vector2(transform.up.x, transform.up.y);
-                localVelocityJ = localVelocityJ * jumpForce;
-                if(Mathf.Abs(localVelocityJ.x) < 1f){
-                    localVelocityJ.x = rb.velocity.x;
-                }
-                 else if(Mathf.Abs(localVelocityJ.y) < 1f){
-                    localVelocityJ.y = rb.velocity.y;
-                }
-
+                getUpLocalVel();
                 rb.velocity = localVelocityJ;
                 jumpTimeCounter -= Time.deltaTime;
             }
@@ -211,7 +198,6 @@ public class PlayerController : MonoBehaviour
             }
         }
       
-
         if(facingRight == false && moveRight == true){
             Flip();
         }
@@ -258,5 +244,48 @@ public class PlayerController : MonoBehaviour
         isJumping = false;
         stillJumping = false;
     }
-    
+
+    //gets velocity vector local to player object relative to left
+    void getLeftLocalVel(){
+        localVelocityL = new Vector2(-1*transform.right.x, -1*transform.right.y);
+        if(walkLeft){
+            localVelocityL = localVelocityL * walkSpeed;
+        }
+        else{
+            localVelocityL = localVelocityL * runSpeed;
+        }
+        if (Mathf.Abs(localVelocityL.y) < Mathf.Abs(localVelocityL.x)){
+            localVelocityL.y = rb.velocity.y;
+        }
+        else{
+            localVelocityL.x = rb.velocity.x;
+        }
+    }
+    //gets velocity vector local to player object relative to right 
+    void getRightLocalVel(){
+        localVelocityR = new Vector2 (transform.right.x, transform.right.y);
+        if(walkRight){
+            localVelocityR = localVelocityR * walkSpeed;
+        }
+        else{
+            localVelocityR = localVelocityR * runSpeed;
+        }
+        if (Mathf.Abs(localVelocityR.y) < Mathf.Abs(localVelocityR.x)){
+            localVelocityR.y = rb.velocity.y;
+        }
+        else{
+            localVelocityR.x = rb.velocity.x;
+        }
+    }
+    //gets velocity vector local to player object relative to up
+    void getUpLocalVel(){
+        localVelocityJ = new Vector2(transform.up.x, transform.up.y);
+        localVelocityJ = localVelocityJ * jumpForce;
+        if(Mathf.Abs(localVelocityJ.x) < Mathf.Abs(localVelocityJ.y)){
+            localVelocityJ.x = rb.velocity.x;
+        }
+        else{
+            localVelocityJ.y = rb.velocity.y;
+        }
+    }
 }
