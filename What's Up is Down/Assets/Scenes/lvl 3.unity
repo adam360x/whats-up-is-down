@@ -714,7 +714,7 @@ PrefabInstance:
       objectReference: {fileID: 133336562}
     - target: {fileID: 6176631505869428205, guid: 9f71dfb61e749458eb28f0e49c1b48b0, type: 3}
       propertyPath: messageTime
-      value: 900
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6176631505869428205, guid: 9f71dfb61e749458eb28f0e49c1b48b0, type: 3}
       propertyPath: NextLvl
