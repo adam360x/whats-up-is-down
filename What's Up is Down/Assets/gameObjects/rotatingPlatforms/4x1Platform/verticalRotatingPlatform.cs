@@ -13,6 +13,7 @@ public class verticalRotatingPlatform : MonoBehaviour
     void Start()
     {
         col = GetComponent<Collider2D>();
+        Debug.Log("verticalRotatingPlatformTest: collider " + col);
     }
 
     // Update is called once per frame
@@ -25,17 +26,19 @@ public class verticalRotatingPlatform : MonoBehaviour
             if (col == touchedCollider)
             {
                 rotate = true;
-                Debug.Log("Hello");
+                Debug.Log("verticalRotatingPlatformTest: Touch Detected");
             }
         }
         if (rotate)
         {
             rotZ += -5f;
             transform.rotation = Quaternion.Euler(0, 0, rotZ);
+            Debug.Log("verticalRotatingPlatformTest: rotZ value is " + rotZ);
 
             if (rotZ % 90 == 0)
             {
                 rotate = false;
+                Debug.Log("verticalRotatingPlatformTest: rotate is " + rotate);
             }
         }
     }

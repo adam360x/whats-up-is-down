@@ -21,6 +21,7 @@ public class portalScript : MonoBehaviour
         if(instance == null)
         {
             instance = this;
+            Debug.Log("portalScriptTest: Instance assigned: " + instance);
         }
 
     }
@@ -34,6 +35,7 @@ public class portalScript : MonoBehaviour
                 portalText.text = "";
                 count = 0;
                 showText = false;
+                Debug.Log("portalScriptTest: showText is now: " + showText);
             }
         }
     }
@@ -41,11 +43,13 @@ public class portalScript : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other){
         if(other.gameObject.CompareTag("Player")){
             if(jewelCounter.instance.jewelScore >= numJewels){
+                Debug.Log("portalScriptTest: Next Scene");
                 SceneManager.LoadScene(NextLvl);
             }
             else{
                 showText = true;
                 portalText.text = "You Need To Collect " + numJewels + " Jewels Before Entering The Portal!";
+                Debug.Log("portalScriptTest: showText is now: " + showText);
                 
             }
         }

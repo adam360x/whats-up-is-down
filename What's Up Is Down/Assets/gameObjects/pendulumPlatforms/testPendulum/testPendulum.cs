@@ -31,28 +31,36 @@ public class testPendulum : MonoBehaviour
     void Start()
     {
         col = GetComponent<Collider2D>();
+        Debug.Log("PendulumPlatformTest: collider " + col);
 
         // Code checks location of the platform relative to the center object and assigns the current angle based on this
         Transform platform = transform.Find("Platform1");
+        Debug.Log("PendulumPlatformTest: platform " + platform);
         if (transform.position.y > platform.position.y)
         {
             angle = -Mathf.PI / 2;
             secondRotate = true;
+            Debug.Log("PendulumPlatformTest: Angle is " + angle + " secondRotate is " + secondRotate);
         }
         if (transform.position.y < platform.position.y)
         {
             angle = -Mathf.PI - Mathf.PI / 2;
             fourthRotate = true;
+            Debug.Log("PendulumPlatformTest: Angle is " + angle + " fourthRotate is " + fourthRotate);
+
         }
         if (transform.position.x < platform.position.x)
         {
             angle = 0;
             firstRotate = true;
+            Debug.Log("PendulumPlatformTest: Angle is " + angle + " firstRotate is " + firstRotate);
         }
         if (transform.position.x > platform.position.x)
         {
             angle = -Mathf.PI;
             thirdRotate = true;
+            Debug.Log("PendulumPlatformTest: Angle is " + angle + " thirdRotate is " + thirdRotate);
+
         }
 
         //if (firstRotate)
@@ -76,10 +84,12 @@ public class testPendulum : MonoBehaviour
         if (transform.position.x - platform.position.x > 0)
         {
             rotationRadius = transform.position.x - platform.position.x;
+            Debug.Log("PendulumPlatformTest: rotationRadius is " + roationRadius);
         }
         else
         {
             rotationRadius = transform.position.y - platform.position.y;
+            Debug.Log("PendulumPlatformTest: rotationRadius is " + roationRadius);
         }
     }
 
@@ -94,11 +104,7 @@ public class testPendulum : MonoBehaviour
             if (col == touchedCollider)
             {
                 rotate = true;
-                Debug.Log("Hello");
-            }
-            else
-            {
-                Debug.Log(wp);
+                Debug.Log("PendulumPlatformTest: Touched Pendulum Platform");
             }
         }
         // Rotates as object around center object and rotates object to face center
@@ -109,12 +115,17 @@ public class testPendulum : MonoBehaviour
             // Determine x and y positions for rotation
             posX = transform.position.x + Mathf.Cos(angle) * rotationRadius;
             posY = transform.position.y + Mathf.Sin(angle) * rotationRadius;
+
+            Debug.Log("PendulumPlatformTest: posX is " + posX + " posY is " + posY);
+
             // Move platform to new rotation coordinates
             platform.position = new Vector2(posX, posY);
             //rotate platform so that it faces the center object
             platform.rotation = Quaternion.Euler(0, 0, angle * (180 / Mathf.PI) + 90);
             // increment angle
             angle = angle - Time.deltaTime * angularSpeed;
+
+            Debug.Log("PendulumPlatformTest: angle is " + angle);
 
             // Stops rotation if first rotation finishes
             if ((angle < -Mathf.PI / 2) && firstRotate)
@@ -124,6 +135,7 @@ public class testPendulum : MonoBehaviour
                 secondRotate = true;
                 angle = -Mathf.PI / 2;
                 platform.rotation = Quaternion.Euler(0, 0, angle * (180 / Mathf.PI) + 90);
+                Debug.Log("PendulumPlatformTest: rotate is " + rotate + " and secondRotate is " + secondRotate);
             }
             // Stops rotation if second rotation finishes
             if (angle < -Mathf.PI && secondRotate)
@@ -133,6 +145,7 @@ public class testPendulum : MonoBehaviour
                 thirdRotate = true;
                 angle = -Mathf.PI;
                 platform.rotation = Quaternion.Euler(0, 0, angle * (180 / Mathf.PI) + 90);
+                Debug.Log("PendulumPlatformTest: rotate is " + rotate + " and thirdRotate is " + thirdRotate);
             }
             // Stops rotation if third rotation finishes
             if (angle < -(Mathf.PI + Mathf.PI / 2) && thirdRotate)
@@ -142,6 +155,8 @@ public class testPendulum : MonoBehaviour
                 fourthRotate = true;
                 angle = -Mathf.PI - Mathf.PI / 2;
                 platform.rotation = Quaternion.Euler(0, 0, angle * (180 / Mathf.PI) + 90);
+                Debug.Log("PendulumPlatformTest: rotate is " + rotate + " and fourthRotate is " + fourthRotate);
+
             }
             // Stops rotation if fourth rotation finishes. Resets angle.
             if (angle < -(2 * Mathf.PI) && fourthRotate)
@@ -151,6 +166,7 @@ public class testPendulum : MonoBehaviour
                 angle = 0;
                 firstRotate = true;
                 platform.rotation = Quaternion.Euler(0, 0, angle * (180 / Mathf.PI) + 90);
+                Debug.Log("PendulumPlatformTest: rotate is " + rotate + " and fourthRotate is " + fourthRotate);
             }
         }
     }
