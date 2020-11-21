@@ -10,7 +10,7 @@ public class testPendulum : MonoBehaviour
     public float rotationRadius = 2f;
     public float angularSpeed = 2f;
     // x,y positions for when object rotates around center
-    float posX, posY= 0;
+    float posX, posY = 0;
     // angle of object
     public float angle;
     // determines if object can rotate
@@ -34,22 +34,22 @@ public class testPendulum : MonoBehaviour
 
         // Code checks location of the platform relative to the center object and assigns the current angle based on this
         Transform platform = transform.Find("Platform1");
-        if (transform.localPosition.y > platform.localPosition.y)
+        if (transform.position.y > platform.position.y)
         {
             angle = -Mathf.PI / 2;
             secondRotate = true;
         }
-        if (transform.localPosition.y < platform.localPosition.y)
+        if (transform.position.y < platform.position.y)
         {
-            angle = -Mathf.PI -Mathf.PI / 2;
+            angle = -Mathf.PI - Mathf.PI / 2;
             fourthRotate = true;
         }
-        if (transform.localPosition.x < platform.localPosition.x)
+        if (transform.position.x < platform.position.x)
         {
             angle = 0;
             firstRotate = true;
         }
-        if (transform.localPosition.x > platform.localPosition.x)
+        if (transform.position.x > platform.position.x)
         {
             angle = -Mathf.PI;
             thirdRotate = true;
@@ -73,13 +73,13 @@ public class testPendulum : MonoBehaviour
         //}
 
         // Finds the radius of the rotation.
-        if (platform.localPosition.x > 0)
+        if (transform.position.x - platform.position.x > 0)
         {
-            rotationRadius = Mathf.Abs(transform.position.x - platform.position.x);
+            rotationRadius = transform.position.x - platform.position.x;
         }
         else
         {
-            rotationRadius = Mathf.Abs(transform.position.y - platform.position.y);
+            rotationRadius = transform.position.y - platform.position.y;
         }
     }
 
@@ -112,12 +112,12 @@ public class testPendulum : MonoBehaviour
             // Move platform to new rotation coordinates
             platform.position = new Vector2(posX, posY);
             //rotate platform so that it faces the center object
-            platform.rotation = Quaternion.Euler(0, 0, angle*(180/Mathf.PI)+90);
+            platform.rotation = Quaternion.Euler(0, 0, angle * (180 / Mathf.PI) + 90);
             // increment angle
             angle = angle - Time.deltaTime * angularSpeed;
-            
+
             // Stops rotation if first rotation finishes
-            if ((angle < -Mathf.PI / 2 ) && firstRotate)
+            if ((angle < -Mathf.PI / 2) && firstRotate)
             {
                 rotate = false;
                 firstRotate = false;
