@@ -84,12 +84,12 @@ public class testPendulum : MonoBehaviour
         if (transform.position.x - platform.position.x > 0)
         {
             rotationRadius = transform.position.x - platform.position.x;
-            Debug.Log("PendulumPlatformTest: rotationRadius is " + roationRadius);
+            Debug.Log("PendulumPlatformTest: rotationRadius is " + rotationRadius);
         }
         else
         {
             rotationRadius = transform.position.y - platform.position.y;
-            Debug.Log("PendulumPlatformTest: rotationRadius is " + roationRadius);
+            Debug.Log("PendulumPlatformTest: rotationRadius is " + rotationRadius);
         }
     }
 
