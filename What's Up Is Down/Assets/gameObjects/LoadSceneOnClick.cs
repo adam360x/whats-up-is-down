@@ -9,5 +9,6 @@ public class LoadSceneOnClick : MonoBehaviour
     public void LoadScene()
     {
         SceneManager.LoadScene(lvlName);
+        Debug.Log("LoadSceneOnClickTest: scene " + lvlName);
     }
 }
