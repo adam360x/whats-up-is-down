@@ -15,6 +15,7 @@ public class jewelCounter : MonoBehaviour
     {
         if(instance == null){
             instance = this;
+            Debug.Log("jewelCounterTest: instance is: " + instance);
         }
     }
 
@@ -22,5 +23,6 @@ public class jewelCounter : MonoBehaviour
     {
         jewelScore += jewelValue;
         jewelText.text = jewelScore.ToString() + "/" + portalScript.instance.numJewels;
+        Debug.Log("jewelCounterTest: jewel text updated to: " + jewelScore.ToString());
     }
 }

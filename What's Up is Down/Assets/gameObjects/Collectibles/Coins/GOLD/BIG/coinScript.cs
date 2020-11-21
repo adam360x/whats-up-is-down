@@ -22,7 +22,9 @@ public class coinScript : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other){
         if(other.gameObject.CompareTag("Player")){
             coinCounter.instance.ChangeCoinScore(coinValue);
+            Debug.Log("coinSCriptTest: Changed coin score");
             Destroy(this.gameObject);
+            Debug.Log("coinScriptTest: Destroyed coin");
         }
     }
 }

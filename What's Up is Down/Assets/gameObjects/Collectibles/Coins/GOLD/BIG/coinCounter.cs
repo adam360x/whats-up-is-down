@@ -21,5 +21,6 @@ public class coinCounter : MonoBehaviour
     public void ChangeCoinScore(int coinValue){
         coinScore += coinValue;
         coinText.text = "X"+coinScore.ToString();
+        Debug.Log("coinCounterTest: coin text updated to: " + coinScore.ToString());
     }
 }

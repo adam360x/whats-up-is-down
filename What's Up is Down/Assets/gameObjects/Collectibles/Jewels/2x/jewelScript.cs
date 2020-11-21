@@ -22,7 +22,9 @@ public class jewelScript : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other){
         if(other.gameObject.CompareTag("Player")){
             jewelCounter.instance.ChangeJewelScore(jewelValue);
+            Debug.Log("jewelSCriptTest: Changed jewel score");
             Destroy(this.gameObject);
+            Debug.Log("jewelScriptTest: Destroyed jewel");
         }
     }
 }
