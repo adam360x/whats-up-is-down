@@ -119,10 +119,8 @@ public class PlayerController : MonoBehaviour
         //gravity input
         if(ePress && !changeGravE && !changeGravQ){
             gravDirection++;
-            Debug.Log("PlayerControllerTest: gravDirection " + gravDirection);
             if(gravDirection > 3){
                 gravDirection = 0;
-                Debug.Log("PlayerControllerTest: gravDirection " + gravDirection);
             }
             changeGravE = true;
             ChangeGravity();
@@ -131,10 +129,8 @@ public class PlayerController : MonoBehaviour
         }
         if(qPress && !changeGravQ && !changeGravE){
             gravDirection--;
-            Debug.Log("PlayerControllerTest: gravDirection " + gravDirection);
             if(gravDirection < 0){
                 gravDirection = 3;
-                Debug.Log("PlayerControllerTest: gravDirection " + gravDirection);
             }
             changeGravQ = true;
             ChangeGravity();
@@ -201,7 +197,6 @@ public class PlayerController : MonoBehaviour
                 }
             }
             if(gravDirection == 1 || gravDirection == 3){
-                Debug.Log("PlayerControllerTest: gravDirection " + gravDirection);
                 if(rb.velocity.y > 0){
                     rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y - friction);
                 }
@@ -233,11 +228,9 @@ public class PlayerController : MonoBehaviour
       
         if(facingRight == false && moveRight == true){
             Flip();
-            Debug.Log("PlayerControllerTest: change direction from facing left to facing right " + moveRight);
         }
         else if(facingRight == true && moveLeft == true){
             Flip();
-            Debug.Log("PlayerControllerTest: change direction from facing right to facing left " + moveLeft);
         }
     }
 
@@ -294,19 +287,15 @@ public class PlayerController : MonoBehaviour
         localVelocityL = new Vector2(-1*transform.right.x, -1*transform.right.y);
         if(walkLeft){
             localVelocityL = localVelocityL * walkSpeed;
-            Debug.Log("PlayerControllerTest: getLeftLocalVel() is called, localVelocityL is set to " + localVelocityL);
         }
         else{
             localVelocityL = localVelocityL * runSpeed;
-            Debug.Log("PlayerControllerTest: getLeftLocalVel() is called, localVelocityL is set to " + localVelocityL);
         }
         if (Mathf.Abs(localVelocityL.y) < Mathf.Abs(localVelocityL.x)){
             localVelocityL.y = rb.velocity.y;
-            Debug.Log("PlayerControllerTest: getLeftLocalVel() still executing, localVelocityL.y is set to " + localVelocityL.y);
         }
         else{
             localVelocityL.x = rb.velocity.x;
-            Debug.Log("PlayerControllerTest: getLeftLocalVel() still executing, localVelocityL.x is set to " + localVelocityL.x);
         }
     }
     //gets velocity vector local to player object relative to right 
@@ -314,19 +303,15 @@ public class PlayerController : MonoBehaviour
         localVelocityR = new Vector2 (transform.right.x, transform.right.y);
         if(walkRight){
             localVelocityR = localVelocityR * walkSpeed;
-            Debug.Log("PlayerControllerTest: getRightLocalVel() is called, localVelocityR is set to " + localVelocityR);
         }
         else{
             localVelocityR = localVelocityR * runSpeed;
-            Debug.Log("PlayerControllerTest: getRightLocalVel() is called, localVelocityR is set to " + localVelocityR);
         }
         if (Mathf.Abs(localVelocityR.y) < Mathf.Abs(localVelocityR.x)){
             localVelocityR.y = rb.velocity.y;
-            Debug.Log("PlayerControllerTest: getRightLocalVel() still executing, localVelocityR.y is set to " + localVelocityR.y);
         }
         else{
             localVelocityR.x = rb.velocity.x;
-            Debug.Log("PlayerControllerTest: getRightLocalVel() still executing, localVelocityR.x is set to " + localVelocityR.x);
         }
     }
     //gets velocity vector local to player object relative to up
@@ -335,11 +320,9 @@ public class PlayerController : MonoBehaviour
         localVelocityJ = localVelocityJ * jumpForce;
         if(Mathf.Abs(localVelocityJ.x) < Mathf.Abs(localVelocityJ.y)){
             localVelocityJ.x = rb.velocity.x;
-            Debug.Log("PlayerControllerTest: getUpLocalVel() is called, localVelocityJ.x is set to " + localVelocityJ.x);
         }
         else{
             localVelocityJ.y = rb.velocity.y;
-            Debug.Log("PlayerControllerTest: getUpLocalVel() is called, localVelocityJ.y is set to " + localVelocityJ.y);
         }
     }
 }
