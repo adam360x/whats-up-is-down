@@ -73,6 +73,7 @@ public class PlayerController : MonoBehaviour
         gravEBtn = GravE.GetComponent<Button>();
         gravEBtn.onClick.AddListener(GravRightClick);
         gravQBtn.onClick.AddListener(GravLeftClick);
+        Debug.Log("PlayerControllerTest: Start() is done");
     }
 
     // Update is called once per frame
@@ -82,9 +83,12 @@ public class PlayerController : MonoBehaviour
         //movement input
         if(joystick.Horizontal > 0){
             moveRight = true;
+            Debug.Log("PlayerControllerTest: moveRight " + moveRight);
             if(joystick.Horizontal < 0.4f){
                 walkRight = true;
                 walkSpeed = (joystick.Horizontal * 2) * runSpeed;
+                Debug.Log("PlayerControllerTest: walkRight " + walkRight);
+                Debug.Log("PlayerControllerTest: walkSpeed " + walkSpeed);
             }
             else{
                 walkRight = false;
@@ -96,9 +100,12 @@ public class PlayerController : MonoBehaviour
         }
         if(joystick.Horizontal < 0){
             moveLeft = true;
+            Debug.Log("PlayerControllerTest: moveLeft " + moveLeft);
             if(joystick.Horizontal > -0.4f){
                 walkLeft = true;
                 walkSpeed = (Mathf.Abs(joystick.Horizontal) * 2) * runSpeed;
+                Debug.Log("PlayerControllerTest: walkLeft " + walkLeft);
+                Debug.Log("PlayerControllerTest: walkSpeed " + walkSpeed);
             }
             else{
                 walkLeft = false;
@@ -112,26 +119,33 @@ public class PlayerController : MonoBehaviour
         //gravity input
         if(ePress && !changeGravE && !changeGravQ){
             gravDirection++;
+            Debug.Log("PlayerControllerTest: gravDirection " + gravDirection);
             if(gravDirection > 3){
                 gravDirection = 0;
+                Debug.Log("PlayerControllerTest: gravDirection " + gravDirection);
             }
             changeGravE = true;
             ChangeGravity();
             ePress = false;
+            Debug.Log("PlayerControllerTest: changeGravE " + changeGravE);
         }
         if(qPress && !changeGravQ && !changeGravE){
             gravDirection--;
+            Debug.Log("PlayerControllerTest: gravDirection " + gravDirection);
             if(gravDirection < 0){
                 gravDirection = 3;
+                Debug.Log("PlayerControllerTest: gravDirection " + gravDirection);
             }
             changeGravQ = true;
             ChangeGravity();
             qPress = false;
+            Debug.Log("PlayerControllerTest: changeGravQ " + changeGravQ);
         }
         if(changeGravE){
             if(rotateAngle % 90 == 0)
             {
                 initialRotateAngle = rotateAngle;
+                Debug.Log("PlayerControllerTest: initialRotateAngle " + initialRotateAngle);
             }
             rotateAngle += rotateRate * Time.deltaTime;
             angleCounter += rotateRate * Time.deltaTime;
@@ -147,6 +161,7 @@ public class PlayerController : MonoBehaviour
             if (rotateAngle % 90 == 0)
             {
                 initialRotateAngle = rotateAngle;
+                Debug.Log("PlayerControllerTest: initialRotateAngle " + initialRotateAngle);
             }
             rotateAngle -= rotateRate * Time.deltaTime;
             angleCounter += rotateRate * Time.deltaTime;
@@ -168,10 +183,12 @@ public class PlayerController : MonoBehaviour
         if(moveRight){
             getRightLocalVel();
             rb.velocity = localVelocityR;
+            Debug.Log("PlayerControllerTest: moveRight " + moveRight);
         }
         if(moveLeft){
             getLeftLocalVel();
             rb.velocity = localVelocityL;
+            Debug.Log("PlayerControllerTest: moveLeft " + moveLeft);
         }
         //friction
         if(!moveLeft && !moveRight && isGrounded){
@@ -184,6 +201,7 @@ public class PlayerController : MonoBehaviour
                 }
             }
             if(gravDirection == 1 || gravDirection == 3){
+                Debug.Log("PlayerControllerTest: gravDirection " + gravDirection);
                 if(rb.velocity.y > 0){
                     rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y - friction);
                 }
@@ -194,12 +212,14 @@ public class PlayerController : MonoBehaviour
         }
         //jumping & jump timer
          if(isJumping && isGrounded){
+            Debug.Log("PlayerControllerTest: isJumping " + isJumping);
             getUpLocalVel();
             rb.velocity = localVelocityJ;
             stillJumping = true;
             jumpTimeCounter = jumpTime;
         }
         if(isJumping && stillJumping){
+            Debug.Log("PlayerControllerTest: stillJumping " + stillJumping);
             if(jumpTimeCounter > 0){
                 getUpLocalVel();
                 rb.velocity = localVelocityJ;
@@ -207,14 +227,17 @@ public class PlayerController : MonoBehaviour
             }
             else{
                 stillJumping = false;
+                Debug.Log("PlayerControllerTest: stillJumping " + stillJumping);
             }
         }
       
         if(facingRight == false && moveRight == true){
             Flip();
+            Debug.Log("PlayerControllerTest: change direction from facing left to facing right " + moveRight);
         }
         else if(facingRight == true && moveLeft == true){
             Flip();
+            Debug.Log("PlayerControllerTest: change direction from facing right to facing left " + moveLeft);
         }
     }
 
@@ -224,37 +247,46 @@ public class PlayerController : MonoBehaviour
         Vector3 Scalar = transform.localScale;
         Scalar.x *= -1;
         transform.localScale = Scalar;
+        Debug.Log("PlayerControllerTest: Direction faced is flipped");
     }
 
     void ChangeGravity(){
         switch (gravDirection){
             case 0:
                 Physics2D.gravity = new Vector2 (0, -9.81f);
+                Debug.Log("PlayerControllerTest: gravDirection = " + Physics2D.gravity);
                 break;
             case 1:
                 Physics2D.gravity = new Vector2 (9.81f, 0);
+                Debug.Log("PlayerControllerTest: gravDirection = " + Physics2D.gravity);
                 break;
             case 2:
                 Physics2D.gravity = new Vector2 (0, 9.81f);
+                Debug.Log("PlayerControllerTest: gravDirection = " + Physics2D.gravity);
                 break;
             case 3:
                 Physics2D.gravity = new Vector2 (-9.81f, 0);
+                Debug.Log("PlayerControllerTest: gravDirection = " + Physics2D.gravity);
                 break;
         }
     }
     
     void GravLeftClick(){
         qPress = true;
+        Debug.Log("PlayerControllerTest: GravLeftClick() is called, qPress is set to " + qPress);
     }
     void GravRightClick(){
         ePress = true;
+        Debug.Log("PlayerControllerTest: GravRightClick() is called, ePress is set to " + ePress);
     }
     public void JumpClick(){
         isJumping = true;
+        Debug.Log("PlayerControllerTest: JumpClick() is called, isJumping is set to " + isJumping);
     }
     public void JumpRelease(){
         isJumping = false;
         stillJumping = false;
+        Debug.Log("PlayerControllerTest: JumpRelease() is called, isJumping is set to " + isJumping + " and stillJumping is set to " + stillJumping);
     }
 
     //gets velocity vector local to player object relative to left
@@ -262,15 +294,19 @@ public class PlayerController : MonoBehaviour
         localVelocityL = new Vector2(-1*transform.right.x, -1*transform.right.y);
         if(walkLeft){
             localVelocityL = localVelocityL * walkSpeed;
+            Debug.Log("PlayerControllerTest: getLeftLocalVel() is called, localVelocityL is set to " + localVelocityL);
         }
         else{
             localVelocityL = localVelocityL * runSpeed;
+            Debug.Log("PlayerControllerTest: getLeftLocalVel() is called, localVelocityL is set to " + localVelocityL);
         }
         if (Mathf.Abs(localVelocityL.y) < Mathf.Abs(localVelocityL.x)){
             localVelocityL.y = rb.velocity.y;
+            Debug.Log("PlayerControllerTest: getLeftLocalVel() still executing, localVelocityL.y is set to " + localVelocityL.y);
         }
         else{
             localVelocityL.x = rb.velocity.x;
+            Debug.Log("PlayerControllerTest: getLeftLocalVel() still executing, localVelocityL.x is set to " + localVelocityL.x);
         }
     }
     //gets velocity vector local to player object relative to right 
@@ -278,15 +314,19 @@ public class PlayerController : MonoBehaviour
         localVelocityR = new Vector2 (transform.right.x, transform.right.y);
         if(walkRight){
             localVelocityR = localVelocityR * walkSpeed;
+            Debug.Log("PlayerControllerTest: getRightLocalVel() is called, localVelocityR is set to " + localVelocityR);
         }
         else{
             localVelocityR = localVelocityR * runSpeed;
+            Debug.Log("PlayerControllerTest: getRightLocalVel() is called, localVelocityR is set to " + localVelocityR);
         }
         if (Mathf.Abs(localVelocityR.y) < Mathf.Abs(localVelocityR.x)){
             localVelocityR.y = rb.velocity.y;
+            Debug.Log("PlayerControllerTest: getRightLocalVel() still executing, localVelocityR.y is set to " + localVelocityR.y);
         }
         else{
             localVelocityR.x = rb.velocity.x;
+            Debug.Log("PlayerControllerTest: getRightLocalVel() still executing, localVelocityR.x is set to " + localVelocityR.x);
         }
     }
     //gets velocity vector local to player object relative to up
@@ -295,9 +335,11 @@ public class PlayerController : MonoBehaviour
         localVelocityJ = localVelocityJ * jumpForce;
         if(Mathf.Abs(localVelocityJ.x) < Mathf.Abs(localVelocityJ.y)){
             localVelocityJ.x = rb.velocity.x;
+            Debug.Log("PlayerControllerTest: getUpLocalVel() is called, localVelocityJ.x is set to " + localVelocityJ.x);
         }
         else{
             localVelocityJ.y = rb.velocity.y;
+            Debug.Log("PlayerControllerTest: getUpLocalVel() is called, localVelocityJ.y is set to " + localVelocityJ.y);
         }
     }
 }
