@@ -6,6 +6,6 @@ public class ExitOnClick : MonoBehaviour
     public void ExitGame()
     {
         Application.Quit();
-        Debug.Log("unityStopsRunningTest: Application stopped running: " + UnityEditor.EditorApplication.isPlaying);
+        //Debug.Log("unityStopsRunningTest: Application stopped running: " + UnityEditor.EditorApplication.isPlaying);
     }
 }
