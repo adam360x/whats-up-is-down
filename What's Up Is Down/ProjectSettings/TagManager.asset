@@ -6,6 +6,7 @@ TagManager:
   tags:
   - 4x1Platform
   - coins
+  - Boundary
   layers:
   - Default
   - TransparentFX
