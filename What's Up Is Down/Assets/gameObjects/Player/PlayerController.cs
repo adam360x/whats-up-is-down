@@ -55,6 +55,9 @@ public class PlayerController : MonoBehaviour
     //Sprite facing bool
     private bool facingRight = true;
 
+    //Animator
+    public Animator animator;
+
 
     // Start is called before the first frame update
     void Start()
@@ -115,9 +118,19 @@ public class PlayerController : MonoBehaviour
             moveLeft = false;
             walkLeft = false;
         }
+        //Run Animation
+        if (joystick.Horizontal > 0 || joystick.Horizontal < 0)
+        {
+            animator.SetBool("isMoving", true);
+        }
+        else
+        {
+            animator.SetBool("isMoving", false);
+        }
+
 
         //gravity input
-        if(ePress && !changeGravE && !changeGravQ){
+        if (ePress && !changeGravE && !changeGravQ){
             gravDirection++;
             if(gravDirection > 3){
                 gravDirection = 0;
@@ -225,8 +238,18 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("PlayerControllerTest: stillJumping " + stillJumping);
             }
         }
-      
-        if(facingRight == false && moveRight == true){
+        //Jumping Animation
+        if (isJumping)
+        {
+            animator.SetBool("Jumping", true);
+        }
+        else
+        {
+            animator.SetBool("Jumping", false);
+        }
+
+
+        if (facingRight == false && moveRight == true){
             Flip();
         }
         else if(facingRight == true && moveLeft == true){
