@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -51,6 +52,10 @@ public class PlayerController : MonoBehaviour
     private float initialRotateAngle;
     private bool changeGravE;
     private bool changeGravQ;
+    public int numGravChangesAllowed;
+    private int numGravChangesLeft;
+    public TextMeshProUGUI gravCountQ;
+    public TextMeshProUGUI gravCountE;
 
     //Sprite facing bool
     private bool facingRight = true;
@@ -76,6 +81,9 @@ public class PlayerController : MonoBehaviour
         gravEBtn = GravE.GetComponent<Button>();
         gravEBtn.onClick.AddListener(GravRightClick);
         gravQBtn.onClick.AddListener(GravLeftClick);
+        numGravChangesLeft = numGravChangesAllowed;
+        gravCountQ.text = numGravChangesLeft.ToString();
+        gravCountE.text = numGravChangesLeft.ToString();
         Debug.Log("PlayerControllerTest: Start() is done");
     }
 
@@ -130,7 +138,7 @@ public class PlayerController : MonoBehaviour
 
 
         //gravity input
-        if (ePress && !changeGravE && !changeGravQ){
+        if (ePress && !changeGravE && !changeGravQ && numGravChangesLeft != 0){
             gravDirection++;
             if(gravDirection > 3){
                 gravDirection = 0;
@@ -138,9 +146,12 @@ public class PlayerController : MonoBehaviour
             changeGravE = true;
             ChangeGravity();
             ePress = false;
+            numGravChangesLeft--;
+            gravCountQ.text = numGravChangesLeft.ToString();
+            gravCountE.text = numGravChangesLeft.ToString();
             Debug.Log("PlayerControllerTest: changeGravE " + changeGravE);
         }
-        if(qPress && !changeGravQ && !changeGravE){
+        if(qPress && !changeGravQ && !changeGravE && numGravChangesLeft != 0){
             gravDirection--;
             if(gravDirection < 0){
                 gravDirection = 3;
@@ -148,6 +159,9 @@ public class PlayerController : MonoBehaviour
             changeGravQ = true;
             ChangeGravity();
             qPress = false;
+            numGravChangesLeft--;
+            gravCountQ.text = numGravChangesLeft.ToString();
+            gravCountE.text = numGravChangesLeft.ToString();
             Debug.Log("PlayerControllerTest: changeGravQ " + changeGravQ);
         }
         if(changeGravE){
