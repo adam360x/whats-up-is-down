@@ -2289,7 +2289,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: c43eec00dc983e84fbb6ca249502992a, type: 3}
     - target: {fileID: 1941753370617758970, guid: c6d69837ab27c73448badfe2d72ee334, type: 3}
       propertyPath: friction
-      value: 0.35
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1941753370617758970, guid: c6d69837ab27c73448badfe2d72ee334, type: 3}
       propertyPath: speed
@@ -2839,6 +2839,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 5553677}
+    - target: {fileID: 8206770732106140145, guid: 3dd95af6d4d6b114db893b4d84f30f14, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -993204999
+      objectReference: {fileID: 0}
     - target: {fileID: 8206770732106140148, guid: 3dd95af6d4d6b114db893b4d84f30f14, type: 3}
       propertyPath: m_Name
       value: Canvas
