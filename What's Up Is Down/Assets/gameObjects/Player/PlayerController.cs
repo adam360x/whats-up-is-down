@@ -247,7 +247,14 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("Jumping", false);
         }
-
+        if (isGrounded)
+        {
+            animator.SetBool("onGround", true);
+        }
+        else
+        {
+            animator.SetBool("onGround", false);
+        }
 
         if (facingRight == false && moveRight == true){
             Flip();
