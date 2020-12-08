@@ -16,12 +16,15 @@ public class musicScript : MonoBehaviour
 
     void Awake()
     {
+
         if (!AudioBegin)
         {
             GetComponent<AudioSource>().Play();
             DontDestroyOnLoad(gameObject);
             AudioBegin = true;
         }
+
+       
     }
 
     // Update is called once per frame
@@ -36,6 +39,8 @@ public class musicScript : MonoBehaviour
             AudioBegin = false;
 
         }
+                
+        
 
     }
 }
