@@ -6,10 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class musicScript : MonoBehaviour
 {
+    static bool AudioBegin = false;
 
-    
-    public static bool AudioBegin = false;
-    
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +16,7 @@ public class musicScript : MonoBehaviour
 
     void Awake()
     {
-        Scene scene = SceneManager.GetActiveScene();
+
         if (!AudioBegin)
         {
             GetComponent<AudioSource>().Play();
@@ -32,7 +30,15 @@ public class musicScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Scene scene = SceneManager.GetActiveScene();
         
+        if(scene.buildIndex == 0)
+        {
+            Debug.Log(scene.name);
+            GetComponent<AudioSource>().Stop();
+            AudioBegin = false;
+
+        }
                 
         
 
