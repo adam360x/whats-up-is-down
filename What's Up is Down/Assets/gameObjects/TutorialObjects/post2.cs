@@ -39,6 +39,7 @@ public class post2 : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            count = 0;
             showText = true;
             post2Text.text = "Jump Here!";
             Debug.Log("post2Test: showText is now: " + showText);

@@ -6,7 +6,7 @@ using TMPro;
 public class post9 : MonoBehaviour
 {
     public static post9 instance;
-    public TextMeshProUGUI post9Text;
+    public TextMeshProUGUI post1Text;
     bool showText = false;
     float count = 0;
     public float messageTime;
@@ -28,7 +28,7 @@ public class post9 : MonoBehaviour
             count += Time.deltaTime;
             if (count >= messageTime)
             {
-                post9Text.text = "";
+                post1Text.text = "";
                 count = 0;
                 showText = false;
                 Debug.Log("post9Test: showText is now: " + showText);
@@ -39,8 +39,9 @@ public class post9 : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            count = 0;
             showText = true;
-            post9Text.text = "be careful! The wood boxes can hold your weight for a short time before they give!";
+            post1Text.text = "Be careful! The wood boxes can hold your weight for a short time!";
             Debug.Log("post9Test: showText is now: " + showText);
 
         }

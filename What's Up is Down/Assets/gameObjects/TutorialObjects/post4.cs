@@ -6,7 +6,7 @@ using TMPro;
 public class post4 : MonoBehaviour
 {
     public static post4 instance;
-    public TextMeshProUGUI post4Text;
+    public TextMeshProUGUI post1Text;
     bool showText = false;
     float count = 0;
     public float messageTime;
@@ -28,7 +28,7 @@ public class post4 : MonoBehaviour
             count += Time.deltaTime;
             if (count >= messageTime)
             {
-                post4Text.text = "";
+                post1Text.text = "";
                 count = 0;
                 showText = false;
                 Debug.Log("post4Test: showText is now: " + showText);
@@ -39,8 +39,9 @@ public class post4 : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            count = 0;
             showText = true;
-            post4Text.text = "Collect Challenge Coins!";
+            post1Text.text = "Collect Challenge Coins!";
             Debug.Log("post4Test: showText is now: " + showText);
 
         }

@@ -6,7 +6,7 @@ using TMPro;
 public class post7 : MonoBehaviour
 {
     public static post7 instance;
-    public TextMeshProUGUI post7Text;
+    public TextMeshProUGUI post1Text;
     bool showText = false;
     float count = 0;
     public float messageTime;
@@ -28,7 +28,7 @@ public class post7 : MonoBehaviour
             count += Time.deltaTime;
             if (count >= messageTime)
             {
-                post7Text.text = "";
+                post1Text.text = "";
                 count = 0;
                 showText = false;
                 Debug.Log("post7Test: showText is now: " + showText);
@@ -39,8 +39,9 @@ public class post7 : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            count = 0;
             showText = true;
-            post7Text.text = "Touch Platform To Rotate!";
+            post1Text.text = "Touch Platform To Rotate!";
             Debug.Log("post7Test: showText is now: " + showText);
 
         }

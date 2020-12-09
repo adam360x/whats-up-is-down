@@ -39,6 +39,7 @@ public class post1 : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            count = 0;
             showText = true;
             post1Text.text = "Welcome to What's Up Is Down!";
             Debug.Log("post1Test: showText is now: " + showText);

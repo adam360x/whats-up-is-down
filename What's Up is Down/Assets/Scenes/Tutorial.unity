@@ -2473,7 +2473,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 2
-      m_TileSpriteIndex: 2
+      m_TileSpriteIndex: 6
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -3544,16 +3544,16 @@ Tilemap:
     m_Data: {fileID: 21300000, guid: b75a7801ce070864a98f3199de3e255f, type: 3}
   - m_RefCount: 14
     m_Data: {fileID: 21300000, guid: 218c07fbca69ec1408924d05a94c7586, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 21300000, guid: 75f81357cb5725d4ca5a0cedee6b8c6d, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 17
     m_Data: {fileID: 21300000, guid: 918d5a52d67334e4691c2120651e9cd2, type: 3}
   - m_RefCount: 19
     m_Data: {fileID: 21300000, guid: 0fd49d5ebe8d90b4d8eff1ad3fdb39d1, type: 3}
   - m_RefCount: 10
     m_Data: {fileID: 21300000, guid: c4caf120b43770642a8bc9b181881c5f, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 21300000, guid: 75f81357cb5725d4ca5a0cedee6b8c6d, type: 3}
   - m_RefCount: 64
     m_Data: {fileID: 21300000, guid: 261d333b5f6dc8c42b50e3a2f648f0d4, type: 3}
   - m_RefCount: 1
@@ -6456,7 +6456,7 @@ PrefabInstance:
       objectReference: {fileID: 1397029796}
     - target: {fileID: 1941753370617758970, guid: c6d69837ab27c73448badfe2d72ee334, type: 3}
       propertyPath: numGravChangesAllowed
-      value: 3
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1941753370617758970, guid: c6d69837ab27c73448badfe2d72ee334, type: 3}
       propertyPath: gravCountQ

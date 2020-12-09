@@ -39,8 +39,9 @@ public class post5 : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            count = 0;
             showText = true;
-            post5Text.text = "Rotate World Here!";
+            post5Text.text = "Rotate World Here! Keep in mind there are limited number of rotates per level.";
             Debug.Log("post5Test: showText is now: " + showText);
 
         }

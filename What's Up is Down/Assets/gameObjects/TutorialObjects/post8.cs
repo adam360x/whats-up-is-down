@@ -6,7 +6,7 @@ using TMPro;
 public class post8 : MonoBehaviour
 {
     public static post8 instance;
-    public TextMeshProUGUI post8Text;
+    public TextMeshProUGUI post1Text;
     bool showText = false;
     float count = 0;
     public float messageTime;
@@ -28,7 +28,7 @@ public class post8 : MonoBehaviour
             count += Time.deltaTime;
             if (count >= messageTime)
             {
-                post8Text.text = "";
+                post1Text.text = "";
                 count = 0;
                 showText = false;
                 Debug.Log("post8Test: showText is now: " + showText);
@@ -39,8 +39,9 @@ public class post8 : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            count = 0;
             showText = true;
-            post8Text.text = "Enter Portal To Proceed!";
+            post1Text.text = "Enter Portal To Proceed!";
             Debug.Log("post8Test: showText is now: " + showText);
 
         }
