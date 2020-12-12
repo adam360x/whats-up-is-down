@@ -252,7 +252,7 @@ PrefabInstance:
       objectReference: {fileID: 783843242}
     - target: {fileID: 1941753370617758970, guid: c6d69837ab27c73448badfe2d72ee334, type: 3}
       propertyPath: numGravChangesAllowed
-      value: 7
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1941753370617758971, guid: c6d69837ab27c73448badfe2d72ee334, type: 3}
       propertyPath: m_Mass
