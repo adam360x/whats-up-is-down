@@ -5,7 +5,7 @@ using UnityEngine;
 public class RotatePlatform : MonoBehaviour
 {
     Collider2D col;
-    public float rotationSpeed;
+    //public float rotationSpeed;
     public float rotZ;
     public bool rotate;
 
@@ -40,6 +40,9 @@ public class RotatePlatform : MonoBehaviour
             {
                 rotate = false;
                 Debug.Log("RotatePlatformTest: rotate is " + rotate);
+            }
+            if (rotZ % 360 == 0) {
+                rotZ = 0;
             }
         }
     }
